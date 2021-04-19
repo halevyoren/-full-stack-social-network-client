@@ -1,0 +1,34 @@
+.center-icon {
+  display: flex;
+  align-items: center;
+}
+.navbar h1 {
+  line-height: 0.3;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 1rem;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px cadetblue;
+  opacity: 0.8;
+  background-color: rgb(59, 59, 59);
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: white;
+  padding: 0.5rem;
+  margin: 0 0.25rem;
+}
+
+.navbar a:hover {
+  color: cadetblue;
+}
