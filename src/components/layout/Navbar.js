@@ -10,7 +10,8 @@ const Navbar = () => {
       <h1>
         <Link to='/'>
           <div className='center-icon'>
-            <FaCode /> SocialWeb
+            <FaCode />
+            SocialWeb
           </div>
         </Link>
       </h1>

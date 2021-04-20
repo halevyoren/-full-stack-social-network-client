@@ -1,0 +1,39 @@
+.form-container {
+  color: black;
+}
+.form-container h1 {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  color: #3650e6;
+}
+.form-group {
+  margin: 1.2rem 0;
+}
+.form-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: gray;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+/* select, */
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid gray;
+}
+
+.switch-login-register {
+  margin-top: 1rem;
+}
+
+.form-subtitle {
+  font-size: 1.5rem;
+  margin-left: 0.3rem;
+}
