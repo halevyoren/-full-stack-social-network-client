@@ -26,21 +26,22 @@ ul {
   align-items: center;
 }
 
-/* Form */
-.form-container {
+/* Contents after navbar */
+.container {
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
   margin-top: 6rem;
   margin-bottom: 3rem;
+  color: black;
 }
 
 /* Alerts */
 .alert {
-  padding: 0.8rem;
-  margin: 1rem;
-  opacity: 0.9;
+  padding: 0.4rem;
+  margin: 1rem 0;
+  font-size: 1.3rem;
 }
 
 .alert.alert-danger {

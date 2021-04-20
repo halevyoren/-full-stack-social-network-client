@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
 import './auth.css';
 
-const Register = () => {
+const Register = ({ setAlert, register, isAutheticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,23 +16,34 @@ const Register = () => {
     passwordConfirm: ''
   });
 
+  const [isPrintingError, setIsPrintingError] = useState(false);
+
   const { name, email, password, passwordConfirm } = formData;
 
-  const nameUpdate = (e) => {
+  const cradentialUpdate = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (password !== passwordConfirm) {
-      console.log('passwords do not match');
-    } else {
-      console.log('success');
+    if (password === passwordConfirm) {
+      register({ name, email, password });
+      return;
+    }
+    if (!isPrintingError) {
+      setIsPrintingError(true);
+      setAlert('passwords do not match', 'danger');
+      setTimeout(() => setIsPrintingError(false), 4000);
     }
   };
 
+  //Redirect if logged in
+  if (isAutheticated) {
+    return <Redirect to='dashboard' />;
+  }
+
   return (
-    <section className='form-container'>
+    <Fragment>
       <h1>Sign Up</h1>
       <div className='center-icon'>
         <FaUser size='1.5rem' />
@@ -42,7 +56,7 @@ const Register = () => {
             placeholder='Name'
             value={name}
             name='name'
-            onChange={(e) => nameUpdate(e)}
+            onChange={(e) => cradentialUpdate(e)}
             required
           />
         </div>
@@ -52,7 +66,7 @@ const Register = () => {
             placeholder='Email Address'
             name='email'
             value={email}
-            onChange={(e) => nameUpdate(e)}
+            onChange={(e) => cradentialUpdate(e)}
             required
           />
           <small className='form-text'>
@@ -67,7 +81,7 @@ const Register = () => {
             name='password'
             value={password}
             minLength='4'
-            onChange={(e) => nameUpdate(e)}
+            onChange={(e) => cradentialUpdate(e)}
             required
           />
         </div>
@@ -78,7 +92,7 @@ const Register = () => {
             name='passwordConfirm'
             value={passwordConfirm}
             minLength='4'
-            onChange={(e) => nameUpdate(e)}
+            onChange={(e) => cradentialUpdate(e)}
             required
           />
         </div>
@@ -92,8 +106,19 @@ const Register = () => {
       <p className='switch-login-register'>
         Already have an account? {<Link to='login'>Sign In</Link>}
       </p>
-    </section>
+    </Fragment>
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAutheticated: PropTypes.bool
+};
+
+const mapStateToProrps = (state) => ({
+  isAutheticated: state.auth.isAutheticated
+});
+
+//export and pass the actions for the store and acces setAlert
+export default connect(mapStateToProrps, { setAlert, register })(Register);

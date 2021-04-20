@@ -28,3 +28,9 @@
 .navbar a:hover {
   color: cadetblue;
 }
+
+@media (max-width: 700px){
+  .hide-icon-sm{
+    display: none;
+  }
+}
