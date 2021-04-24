@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './LandingPage.css';
 
-const LandingPage = () => {
+const LandingPage = ({ isAutheticated }) => {
+  //Redirect if dashboard in
+  if (isAutheticated) {
+    return <Redirect to='/dashboard' />;
+  }
   return (
     <section className='landing-page-background'>
       <div className='landing-page-contents'>
@@ -22,4 +28,12 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+LandingPage.prototypes = {
+  isAutheticated: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  isAutheticated: state.auth.isAutheticated
+});
+
+export default connect(mapStateToProps)(LandingPage);

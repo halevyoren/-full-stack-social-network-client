@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { FaCode } from 'react-icons/fa';
+import { FaCode, FaUser } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,8 +12,14 @@ const Navbar = ({ auth: { isAutheticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
+        <Link className='center-icon' to='dashboard'>
+          <FaUser />
+          <span className='hide-sm-screen'>&nbsp; Dashbord</span>
+        </Link>
+      </li>
+      <li>
         <Link className='center-icon' onClick={logout} to='#!'>
-          <GoSignOut /> <span className='hide-icon-sm'> Logout</span>
+          <GoSignOut /> <span className='hide-sm-screen'> &nbsp; Logout</span>
         </Link>
       </li>
     </ul>
@@ -42,7 +48,11 @@ const Navbar = ({ auth: { isAutheticated, loading }, logout }) => {
         </Link>
       </h1>
       {!loading && (
-        <Fragment>{isAutheticated ? authLinks : guestLinks}</Fragment>
+        <Fragment>
+          <div className='navbar-left-links'>
+            {isAutheticated ? authLinks : guestLinks}
+          </div>
+        </Fragment>
       )}
     </div>
   );

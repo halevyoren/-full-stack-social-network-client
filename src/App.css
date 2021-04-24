@@ -37,6 +37,43 @@ ul {
   color: black;
 }
 
+.container h1 {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  color: #3650e6;
+  line-height: 3rem;
+}
+
+/* Form */
+.form-group {
+  margin: 1.2rem 0;
+}
+
+.form-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: gray;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid gray;
+}
+
+.form-subtitle {
+  font-size: 1.5rem;
+  margin-left: 0.3rem;
+}
+
 /* Alerts */
 .alert {
   padding: 0.4rem;
@@ -47,4 +84,26 @@ ul {
 .alert.alert-danger {
   background: rgb(245, 30, 30);
   color: rgb(243, 221, 221);
+}
+.alert.alert-success {
+  background: rgb(66, 243, 66);
+}
+
+/* Button */
+.button {
+  background-color: cadetblue;
+  color: white;
+  transition: background-color 2s;
+  margin-top: 1rem;
+}
+
+.button:hover {
+  background-color: rgb(59, 80, 177);
+}
+
+/* Hiding on larg screen */
+@media (max-width: 700px) {
+  .hide-sm-screen {
+    display: none;
+  }
 }

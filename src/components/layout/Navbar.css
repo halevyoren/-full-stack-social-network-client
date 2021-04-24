@@ -12,11 +12,16 @@
   top: 0;
   border-bottom: solid 1px cadetblue;
   opacity: 0.98;
-  background-color: rgb(59, 59, 59);
+  /* background-color: rgb(59, 59, 59); */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5);
 }
 
 .navbar ul {
   display: flex;
+}
+
+.navbar-left-links {
+  font-size: 1.2rem;
 }
 
 .navbar a {
@@ -26,11 +31,7 @@
 }
 
 .navbar a:hover {
-  color: cadetblue;
+  /* color: cadetblue; */
+  color: black;
 }
 
-@media (max-width: 700px){
-  .hide-icon-sm{
-    display: none;
-  }
-}

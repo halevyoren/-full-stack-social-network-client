@@ -1,0 +1,46 @@
+p {
+  font-size: 1.3rem;
+}
+
+small,
+form span {
+  color: gray;
+}
+
+.instruction {
+  color: red;
+}
+
+.twitter {
+  color: #38a1f2;
+}
+
+.facebook {
+  color: #4267b2;
+}
+
+.youTube {
+  color: #ff0000;
+}
+
+.linkedin {
+  color: #0077b5;
+}
+
+.instagram {
+  color: black;
+}
+
+.back-button {
+  background-color: grey;
+  color: white;
+}
+
+.button {
+  margin-right: 1rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: baseline;
+}

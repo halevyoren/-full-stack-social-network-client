@@ -1,0 +1,46 @@
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Moment from 'react-moment';
+
+const Experience = ({ experience }) => {
+  const experiences = experience.map((exp) => (
+    <tr key={exp._id}>
+      <td>{exp.company}</td>
+      <td className='hide-sm-screen'>{exp.title}</td>
+      <td>
+        {<Moment format='YYYY/MM/DD'>{exp.from}</Moment>} -{' '}
+        {exp.to ? <Moment format='YYYY/MM/DD'>{exp.to}</Moment> : 'Now'}
+      </td>
+      <td>
+        <button className='button update'>Update</button>
+      </td>
+      <td>
+        <button className='button delete'>Delete</button>
+      </td>
+    </tr>
+  ));
+  return (
+    <Fragment>
+      <h2>Experience Credentials</h2>
+      <table className='table'>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th className='hide-sm-screen'>Title</th>
+            <th className='hide-sm-screen'>Years</th>
+            <th />
+            <th />
+          </tr>
+        </thead>
+        <tbody>{experiences}</tbody>
+      </table>
+    </Fragment>
+  );
+};
+
+Experience.propTypes = {
+  experience: PropTypes.array.isRequired
+};
+
+export default Experience;
