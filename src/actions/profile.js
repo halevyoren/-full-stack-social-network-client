@@ -1,7 +1,15 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from './types';
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  UPDATE_PROFILE,
+  CLEAR_PROFILE,
+  ACCOUNT_DELETED,
+  GET_PROFILES,
+  GET_REPOS
+} from './types';
 
 //Get current users profile
 
@@ -11,6 +19,72 @@ export const getCurrentProfile = () => async (dispatch) => {
 
     dispatch({
       type: GET_PROFILE,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status
+      }
+    });
+  }
+};
+
+// Get all profiles
+export const getAllProfiles = () => async (dispatch) => {
+  // Clear current profile
+  dispatch({
+    type: CLEAR_PROFILE
+  });
+
+  // Get all profiles
+  try {
+    const response = await axios.get('/api/profile');
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status
+      }
+    });
+  }
+};
+
+// Get profile by user id
+export const getProfileUserById = (userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/profile/user/${userId}`);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: response.data
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status
+      }
+    });
+  }
+};
+
+// Get github repos
+export const getGithubRepos = (githubUsername) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/profile/github/${githubUsername}`);
+
+    dispatch({
+      type: GET_REPOS,
       payload: response.data
     });
   } catch (error) {
@@ -127,5 +201,86 @@ export const addEducation = (formData, history) => async (dispatch) => {
         status: error.response.status
       }
     });
+  }
+};
+
+// Delete experience
+export const deleteExperience = (exp_id) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`/api/profile/experience/${exp_id}`);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: response.data
+    });
+
+    dispatch(setAlert('Experience removed', 'success'));
+  } catch (error) {
+    const errors = error.response.data.errors;
+    if (errors) {
+      errors.forEach((err) => {
+        dispatch(setAlert(err.msg, 'danger'));
+      });
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status
+      }
+    });
+  }
+};
+
+// Delete education
+export const deleteEducation = (edu_id) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`/api/profile/education/${edu_id}`);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: response.data
+    });
+
+    dispatch(setAlert('Education removed', 'success'));
+  } catch (error) {
+    const errors = error.response.data.errors;
+    if (errors) {
+      errors.forEach((err) => {
+        dispatch(setAlert(err.msg, 'danger'));
+      });
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status
+      }
+    });
+  }
+};
+
+//Delete account and profile
+export const deleteAccount = () => async (dispatch) => {
+  if (window.confirm('Are you sure? \nThis cannot be undone!')) {
+    try {
+      await axios.delete('api/profile');
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({ type: ACCOUNT_DELETED });
+
+      dispatch(setAlert('Your account has been deleted', 'gray'));
+    } catch (error) {
+      const errors = error.response.data.errors;
+      if (errors) {
+        errors.forEach((err) => {
+          dispatch(setAlert(err.msg, 'danger'));
+        });
+      }
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {
+          msg: error.response.statusText,
+          status: error.response.status
+        }
+      });
+    }
   }
 };

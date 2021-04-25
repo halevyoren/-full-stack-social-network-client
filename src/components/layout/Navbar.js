@@ -8,26 +8,31 @@ import PropTypes from 'prop-types';
 import './Navbar.css';
 import { logout } from '../../actions/auth';
 
-const Navbar = ({ auth: { isAutheticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
-      <li>
-        <Link className='center-icon' to='dashboard'>
-          <FaUser />
-          <span className='hide-sm-screen'>&nbsp; Dashbord</span>
-        </Link>
-      </li>
-      <li>
-        <Link className='center-icon' onClick={logout} to='#!'>
-          <GoSignOut /> <span className='hide-sm-screen'> &nbsp; Logout</span>
-        </Link>
-      </li>
+      <div className='center-icon'>
+        <li>
+          <Link to='/profiles'>Developers</Link>
+        </li>
+        <li>
+          <Link className='center-icon' to='/dashboard'>
+            <FaUser />
+            <span className='hide-sm-screen'>&nbsp; Dashbord</span>
+          </Link>
+        </li>
+        <li>
+          <Link className='center-icon' onClick={logout} to='#!'>
+            <GoSignOut /> <span className='hide-sm-screen'> &nbsp; Logout</span>
+          </Link>
+        </li>
+      </div>
     </ul>
   );
   const guestLinks = (
     <ul>
       <li>
-        <Link to='#!'>Developers</Link>
+        <Link to='/profiles'>Developers</Link>
       </li>
       <li>
         <Link to='/login'>Login</Link>
@@ -50,7 +55,7 @@ const Navbar = ({ auth: { isAutheticated, loading }, logout }) => {
       {!loading && (
         <Fragment>
           <div className='navbar-left-links'>
-            {isAutheticated ? authLinks : guestLinks}
+            {isAuthenticated ? authLinks : guestLinks}
           </div>
         </Fragment>
       )}

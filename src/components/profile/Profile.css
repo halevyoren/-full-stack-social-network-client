@@ -1,0 +1,99 @@
+h2 {
+  color: rgb(0, 160, 107);
+}
+
+.title {
+  color: blueviolet;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.profile-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-image: linear-gradient(90deg, red, yellow, blue);
+  padding: 0 2rem 4rem 4rem;
+}
+.profile-grid {
+  display: grid;
+  grid-template-areas:
+    'top top'
+    'about about'
+    'exp edu'
+    'github github';
+  grid-gap: 1rem;
+}
+
+.profile-top {
+  grid-area: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(105, 105, 105);
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.profile-top h1 {
+  font-size: 3rem;
+  color: aquamarine;
+  /* line-height: 3rem; */
+}
+
+.profile-exp {
+  padding: 0 0 2rem 2rem;
+  grid-area: exp;
+  background: rgb(224, 224, 224);
+  margin-top: 1rem;
+}
+.profile-edu {
+  padding: 0 0 2rem 2rem;
+  grid-area: edu;
+  background: rgb(224, 224, 224);
+  margin-top: 1rem;
+}
+
+.profile-edu {
+  grid-area: edu;
+}
+
+.icons a {
+  color: rgb(255, 255, 255);
+  margin: 0 0.3rem;
+  font-size: 2rem;
+}
+
+.icons a:hover {
+  color: black;
+}
+
+.profile-about {
+  grid-area: about;
+  text-align: center;
+  /* margin-top: 2rem; */
+  padding: 2rem;
+  background: rgb(224, 224, 224);
+}
+
+.skills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.line {
+  height: 1px;
+  background: rgb(85, 85, 85);
+  margin: 1.5rem 0;
+}
+.skill {
+  padding: 1rem;
+  font-size: 1.2rem;
+}

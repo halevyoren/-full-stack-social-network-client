@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import './auth.css';
 import { login } from '../../actions/auth';
 
-const Login = ({ login, isAutheticated }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -25,7 +25,7 @@ const Login = ({ login, isAutheticated }) => {
   };
 
   //Redirect if logged in
-  if (isAutheticated) {
+  if (isAuthenticated) {
     return <Redirect to='dashboard' />;
   }
 
@@ -70,11 +70,11 @@ const Login = ({ login, isAutheticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAutheticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProrps = (state) => ({
-  isAutheticated: state.auth.isAutheticated
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProrps, { login })(Login);

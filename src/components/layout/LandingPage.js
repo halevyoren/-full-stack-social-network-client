@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 
 import './LandingPage.css';
 
-const LandingPage = ({ isAutheticated }) => {
+const LandingPage = ({ isAuthenticated }) => {
   //Redirect if dashboard in
-  if (isAutheticated) {
+  if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
   return (
@@ -29,11 +29,11 @@ const LandingPage = ({ isAutheticated }) => {
 };
 
 LandingPage.prototypes = {
-  isAutheticated: PropTypes.bool.isRequired
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  isAutheticated: state.auth.isAutheticated
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps)(LandingPage);

@@ -5,12 +5,13 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  ACCOUNT_DELETED
 } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
-  isAutheticated: false,
+  isAuthenticated: false,
   loading: true,
   user: null
 };
@@ -21,7 +22,7 @@ const auth = (state = initialState, action) => {
     case USER_LOADED:
       return {
         ...state,
-        isAutheticated: true,
+        isAuthenticated: true,
         loading: false,
         user: payload
       };
@@ -31,18 +32,19 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         ...payload,
-        isAutheticated: true,
+        isAuthenticated: true,
         loading: false
       };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case AUTH_ERROR:
     case LOGOUT:
+    case ACCOUNT_DELETED:
       localStorage.removeItem('token');
       return {
         ...state,
         token: null,
-        isAutheticated: false,
+        isAuthenticated: false,
         loading: false,
         user: null
       };
