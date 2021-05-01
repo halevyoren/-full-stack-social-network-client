@@ -1,3 +1,8 @@
 .switch-login-register {
   margin-top: 1rem;
 }
+
+h1 {
+  font-size: 3.5rem;
+  /* text-decoration: underline; */
+}

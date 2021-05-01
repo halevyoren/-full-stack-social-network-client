@@ -1,0 +1,10 @@
+.create-comment-title {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background: rgb(201, 255, 248);
+  border: solid 1px rgb(0, 255, 221);
+}
+.comments {
+  width: 80%;
+  margin: auto;
+}

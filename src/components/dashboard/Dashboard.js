@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FaTrash, FaUser } from 'react-icons/fa';
+import { FaTrashAlt, FaUser } from 'react-icons/fa';
 
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
@@ -20,7 +20,7 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
-  return loading ? (
+  return loading === null ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -37,7 +37,7 @@ const Dashboard = ({
 
           <div className='center-icon'>
             <button className='button delete' onClick={() => deleteAccount()}>
-              <FaTrash /> &nbsp; Delete Account
+              <FaTrashAlt /> &nbsp; Delete Account
             </button>
           </div>
         </Fragment>

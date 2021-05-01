@@ -7,6 +7,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+// import ProfileGithub from './ProfileGithub';
 import { getProfileUserById } from '../../actions/profile';
 import { Link } from 'react-router-dom';
 import './Profile.css';
@@ -24,9 +25,9 @@ const Profile = ({
     <Fragment>
       <div className='profile-page'>
         <div className='container'>
-          {!profile || loading ? (
+          {loading ? (
             <Spinner />
-          ) : (
+          ) : profile !== null ? (
             <Fragment>
               <Link to='/profiles' className='button'>
                 Back to profiles
@@ -72,8 +73,13 @@ const Profile = ({
                     <h4>No education added</h4>
                   )}
                 </div>
+                {/* {profile.githubusername && (
+                  <ProfileGithub username={profile.githubusername} />
+                )} */}
               </div>
             </Fragment>
+          ) : (
+            <h1 className='no-profile'>No profile found</h1>
           )}
         </div>
       </div>

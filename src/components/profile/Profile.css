@@ -14,8 +14,8 @@ h2 {
   left: 0;
   width: 100%;
   min-height: 100%;
-  background-size: cover;
-  background-image: linear-gradient(90deg, red, yellow, blue);
+  /* background-size: cover; */
+  /* background-image: linear-gradient(90deg, red, yellow, blue); */
   padding: 0 2rem 4rem 4rem;
 }
 .profile-grid {
@@ -59,8 +59,17 @@ h2 {
   margin-top: 1rem;
 }
 
-.profile-edu {
-  grid-area: edu;
+.profile-github {
+  padding: 0 0 2rem 2rem;
+  grid-area: github;
+  background: rgb(224, 224, 224);
+  margin-top: 1rem;
+}
+
+.repo {
+  padding: 1;
+  margin-top: 1;
+  display: block;
 }
 
 .icons a {
@@ -96,4 +105,11 @@ h2 {
 .skill {
   padding: 1rem;
   font-size: 1.2rem;
+}
+
+.no-profile {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  background-color: ivory;
 }

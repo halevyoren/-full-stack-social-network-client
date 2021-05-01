@@ -31,7 +31,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <h1>Sign in</h1>
+      <h1 className='title'>Sign in</h1>
       <div className='center-icon'>
         <FaUser size='1.5rem' />
         <p className='form-subtitle'>Sign into your account</p>

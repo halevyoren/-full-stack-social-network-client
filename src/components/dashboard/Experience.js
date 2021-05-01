@@ -14,9 +14,9 @@ const Experience = ({ experience, deleteExperience }) => {
         {<Moment format='DD/MM/YYYY'>{exp.from}</Moment>} -{' '}
         {exp.to ? <Moment format='DD/MM/YYYY'>{exp.to}</Moment> : 'Now'}
       </td>
-      <td>
+      {/* <td>
         <button className='button update'>Update</button>
-      </td>
+      </td> */}
       <td>
         <button
           className='button delete'
@@ -37,7 +37,7 @@ const Experience = ({ experience, deleteExperience }) => {
             <th className='hide-sm-screen'>Title</th>
             <th className='hide-sm-screen'>Years</th>
             <th />
-            <th />
+            {/* <th /> */}
           </tr>
         </thead>
         <tbody>{experiences}</tbody>
