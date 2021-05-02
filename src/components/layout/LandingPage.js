@@ -13,7 +13,7 @@ const LandingPage = ({ isAuthenticated }) => {
   return (
     <section className='landing-page-background'>
       <div className='landing-page-contents'>
-        <h1>Welcome to the developer Socialyweb</h1>
+        <h1>Welcome to the developer Social website</h1>
         <p>Create a profile, share posts and help others</p>
         <div className='buttons'>
           <Link to='/register' className='button'>

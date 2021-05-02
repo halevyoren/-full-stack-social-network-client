@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Social network for developers (client) - MERN
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was made using MREN, you can view it [here](https://developer-social-website.herokuapp.com/).
 
-## Available Scripts
+> MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
 
-In the project directory, you can run:
+MERN stack is the idea of using Javascript/Node for fullstack web development.
 
-### `npm start`
+## to clone or download (client)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```terminal
+$ git clone https://github.com/halevyoren/-full-stack-social-network-client.git
+$ npm i
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Usage (run client app on your machine)
 
-### `npm test`
+## Prerequirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [npm](https://nodejs.org/en/download/package-manager/)
 
-### `npm run build`
+notice, you need client and server runs concurrently in different terminal session, in order to make them talk to each other
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Client-side usage(PORT: 3000)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```terminal
+$ cd client   // go to client folder
+$ npm install       // npm install pacakges
+$ npm start // run it locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// deployment for client app
+$ npm run build // this will compile the react code using webpack and generate a folder called docs in the root level
+$ npm run start // this will run the files in docs, this behavior is exactly the same how gh-pages will run your static site
+```
 
-### `npm run eject`
+# Dependencies(tech-stacks)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Client-side                           | Server-side                    |
+| ------------------------------------- | ------------------------------ |
+| "axios": "^0.21.1"                    | "bcryptjs": "^2.4.3"           |
+| "moment": "^2.29.1"                   | "config": "^3.3.6"             |
+| "react": "^17.0.2"                    | "express": "^4.17.1"           |
+| "react-dom": "^17.0.2"                | "express-validator": "^6.10.0" |
+| "react-icons": "^4.2.0"               | "gravatar": "^1.8.1"           |
+| "react-moment": "^1.1.1"              | "jsonwebtoken": "^8.5.1"       |
+| "react-redux": "^7.2.3"               | "mongoose": "^5.12.4"          |
+| "react-router-dom": "^5.2.0"          | "request": "^2.88.2"           |
+| "react-scripts": "4.0.3"              |
+| "redux": "^4.0.5"                     |
+| "redux-devtools-extension": "^2.13.9" |
+| "redux-thunk": "^2.3.0"               |
+| "uuid": "^8.3.2"                      |

@@ -45,7 +45,7 @@ const PostItem = ({
             </button>
 
             <Link to={`/posts/${_id}`} className='button'>
-              Discussion {comments.length > 0 && comments.length}
+              {comments.length > 0 && comments.length} Comments
             </Link>
             {!auth.loading && user === auth.user._id && (
               <button
