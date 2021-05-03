@@ -69,10 +69,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={(e) => cradentialUpdate(e)}
             required
           />
-          <small className='form-text'>
-            This site uses gravatar, so if you want a profile image, use a
-            gravatar email (for example: gmail)
-          </small>
         </div>
         <div className='form-group'>
           <input

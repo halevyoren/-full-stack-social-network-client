@@ -102,11 +102,22 @@ export const getGithubRepos = (githubUsername) => async (dispatch) => {
 export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {
+  const newFormData = new FormData();
+  newFormData.append('company', formData.company);
+  newFormData.append('website', formData.website);
+  newFormData.append('location', formData.location);
+  newFormData.append('status', formData.status);
+  newFormData.append('skills', formData.skills);
+  newFormData.append('bio', formData.bio);
+  newFormData.append('githubusername', formData.githubusername);
+  newFormData.append('youtube', formData.youtube);
+  newFormData.append('twitter', formData.twitter);
+  newFormData.append('facebook', formData.facebook);
+  newFormData.append('linkedin', formData.linkedin);
+  newFormData.append('instagram', formData.instagram);
+  newFormData.append('image', formData.image);
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' }
-    };
-    const response = await axios.post('/api/profile', formData, config);
+    const response = await axios.post('/api/profile', newFormData);
     dispatch({
       type: GET_PROFILE,
       payload: response.data

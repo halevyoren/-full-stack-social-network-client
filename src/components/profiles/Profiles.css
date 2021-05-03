@@ -9,3 +9,8 @@
   border: 1px solid gray;
   background-color: rgb(123, 240, 248);
 }
+
+.profile img {
+  max-height: 12rem;
+  object-fit: contain;
+}

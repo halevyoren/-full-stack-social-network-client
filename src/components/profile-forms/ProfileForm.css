@@ -44,3 +44,7 @@ form span {
   display: flex;
   align-items: baseline;
 }
+
+.photo {
+  padding-top: 1rem;
+}

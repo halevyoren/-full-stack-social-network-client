@@ -33,8 +33,38 @@ const EditProfile = ({
     twitter: '',
     facebook: '',
     linkedin: '',
-    instagram: ''
+    instagram: '',
+    image: ''
   });
+
+  //the url to show as a preview
+  const [imagePreview, setImagePreview] = useState();
+
+  //Picking and showing image
+
+  //generate a preview of the image and forward the pick file
+  const pickedFileHandler = (event) => {
+    let pickedFile;
+
+    //if exactly 1 file was picked
+    if (event.target.files && event.target.files.length === 1) {
+      pickedFile = event.target.files[0];
+
+      //generating an image preview url
+      const fileReader = new FileReader();
+      //this fuction will execute once the reading of the file is done
+      fileReader.onload = () => {
+        setImagePreview(fileReader.result);
+        setFormData({
+          ...formData,
+          image: fileReader.result
+        });
+      };
+      //creating a url to output
+      fileReader.readAsDataURL(pickedFile);
+    } else {
+    }
+  };
 
   useEffect(() => {
     getCurrentProfile();
@@ -51,7 +81,8 @@ const EditProfile = ({
         twitter: '',
         facebook: '',
         linkedin: '',
-        instagram: ''
+        instagram: '',
+        image: ''
       });
     } else if (profile) {
       setFormData({
@@ -81,7 +112,8 @@ const EditProfile = ({
         instagram:
           profile.social && profile.social.instagram
             ? profile.social.instagram
-            : ''
+            : '',
+        image: ''
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -277,6 +309,15 @@ const EditProfile = ({
             </div>
           </Fragment>
         )}
+        <div className='photo'>
+          <input
+            type='file'
+            onChange={pickedFileHandler}
+            accept='.jpeg,.jpg,.png'
+          />
+          {imagePreview && <img src={imagePreview} alt='preview' />}
+          {!imagePreview && <p>please pick an image.</p>}
+        </div>
         <input type='submit' className='button' />
         <Link to='/dashboard'>Go Back</Link>
       </form>

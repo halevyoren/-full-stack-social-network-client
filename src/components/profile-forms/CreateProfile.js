@@ -28,7 +28,8 @@ const CreateProfile = ({ createProfile, history }) => {
     twitter: '',
     facebook: '',
     linkedin: '',
-    instagram: ''
+    instagram: '',
+    image: ''
   });
 
   const {
@@ -46,6 +47,9 @@ const CreateProfile = ({ createProfile, history }) => {
     instagram
   } = formData;
 
+  //the url to show as a preview
+  const [imagePreview, setImagePreview] = useState();
+
   const ToggleSocial = () => {
     setShowSocialNetwork((prev) => !prev);
   };
@@ -62,6 +66,32 @@ const CreateProfile = ({ createProfile, history }) => {
     createProfile(formData, history);
   };
 
+  //Picking and showing image
+
+  //generate a preview of the image and forward the pick file
+  const pickedFileHandler = (event) => {
+    let pickedFile;
+
+    //if exactly 1 file was picked
+    if (event.target.files && event.target.files.length === 1) {
+      pickedFile = event.target.files[0];
+
+      //generating an image preview url
+      const fileReader = new FileReader();
+      //this fuction will execute once the reading of the file is done
+      fileReader.onload = () => {
+        setImagePreview(fileReader.result);
+        setFormData({
+          ...formData,
+          image: fileReader.result
+        });
+      };
+      //creating a url to output
+      fileReader.readAsDataURL(pickedFile);
+    } else {
+    }
+  };
+
   return (
     <Fragment>
       <h1>All Developers</h1>
@@ -75,7 +105,7 @@ const CreateProfile = ({ createProfile, history }) => {
           <select name='status' value={status} onChange={changeInput}>
             <option value='0'>* Select Professional Status</option>
             <option value='Developer'>Developer</option>
-            <option value='Junio Developer'>Junio Developer</option>
+            <option value='Junior Developer'>Junior Developer</option>
             <option value='Senior Developer'>Senior Developer</option>
             <option value='Manager'>Manager</option>
             <option value='Student or Learning'>Developer</option>
@@ -221,6 +251,15 @@ const CreateProfile = ({ createProfile, history }) => {
             </div>
           </Fragment>
         )}
+        <div className='photo'>
+          <input
+            type='file'
+            onChange={pickedFileHandler}
+            accept='.jpeg,.jpg,.png'
+          />
+          {imagePreview && <img src={imagePreview} alt='preview' />}
+          {!imagePreview && <p>please pick an image.</p>}
+        </div>
         <input type='submit' className='button' />
         <Link to='/dashboard'>Go Back</Link>
       </form>

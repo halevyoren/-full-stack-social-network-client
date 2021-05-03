@@ -14,7 +14,7 @@ const CommentItem = ({
   deleteComment
 }) => {
   return (
-    <div className='post bg-white p-1 my-1'>
+    <div className='post'>
       <div>
         <Link to={`/profile/${user}`}>
           <img className='round-img' src={avatar} alt='' />
@@ -22,7 +22,7 @@ const CommentItem = ({
         </Link>
       </div>
       <div>
-        <p className='my-1'>{text}</p>
+        <p>{text}</p>
         <p className='post-date'>
           Posted on <Moment format='DD/MM/YYYY, H:mm'>{date}</Moment>
         </p>
@@ -42,7 +42,7 @@ const CommentItem = ({
 
 CommentItem.propTypes = {
   deleteComment: PropTypes.func.isRequired,
-  postId: PropTypes.number.isRequired,
+  postId: PropTypes.string.isRequired,
   comment: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
